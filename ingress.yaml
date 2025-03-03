@@ -1,18 +1,19 @@
----
-  apiVersion: traefik.io/v1alpha1
-  kind: IngressRoute
-  metadata:
-    name: gotify
-    namespace: gotify
-    annotations:
-      kubernetes.io/ingress.class: traefik-external
-  spec:
-    entryPoints:
-      - web
-    routes:
-      - match: Host(`gotify.44.201.109.120.slip.io`)
-        kind: Rule
-        services:
-          - name: gotify
-            port: 80
-  
+  ---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: gotify
+  namespace: gotify
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`gotify.44.201.109.120.slip.io`) # Replace with your IP
+      kind: Rule
+      services:
+        - name: gotify
+          port: 80
+      middlewares:
+        - name: default-headers
