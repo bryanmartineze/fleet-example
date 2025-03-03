@@ -10,7 +10,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`gotify.44.201.109.120.slip.io`) # Replace with your IP
+    - match: Host(`gotify.44.201.109.120.sslip.io`) # Replace with your IP
       kind: Rule
       services:
         - name: gotify
