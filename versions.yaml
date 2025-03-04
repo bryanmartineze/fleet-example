@@ -55,4 +55,4 @@ spec:
           service:
             name: whoami
             port:
-              number: 8000
+              number: 80
