@@ -1,57 +1,58 @@
+
 # clemenko
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: versions
+  name: whoami
   labels:
-    app: versions
+    app: whoami
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
-      app: versions
+      app: whoami
   template:
     metadata:
       labels:
-        app: versions
+        app: whoami
     spec:
       containers:
-      - name: versions
-        image: clemenko/dzver
-        securityContext:
-          allowPrivilegeEscalation: false
+      - name: whoami
+        image: containous/whoami
         ports:
         - containerPort: 80
+        imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    name: versions
-  name: versions
+    name: whoami
+  name: whoami
 spec:
   selector:
-    app: versions
+    app: whoami
+  type: NodePort
   ports:
-  - name: versions
+  - name: whoami
     protocol: TCP
-    port: 80
+    port: 8000
     targetPort: 80
+
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: versions
+  name: whoami
 spec:
   rules:
-  - host: versions.44.201.109.120.sslip.io
+  - host: whoami.rfed.io
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: versions
+            name: whoami
             port:
-              number: 80
+              number: 8000
