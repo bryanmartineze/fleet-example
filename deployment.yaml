@@ -19,8 +19,6 @@ spec:
         app.kubernetes.io/instance: gotify
         app.kubernetes.io/name: gotify
     spec:
-      nodeSelector:
-        worker: "true"
       containers:
       - name: gotify
         image: gotify/server:latest
