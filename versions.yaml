@@ -46,7 +46,7 @@ metadata:
   name: whoami
 spec:
   rules:
-  - host: whoami.44.201.109.120.sslip.io
+  - host: whoami.3.92.189.202.sslip.io
     http:
       paths:
       - path: /
