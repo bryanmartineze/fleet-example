@@ -45,7 +45,7 @@ metadata:
   name: versions
 spec:
   rules:
-  - host: versions.rfed.io
+  - host: versions.44.201.109.120.sslip.io
     http:
       paths:
       - path: /
